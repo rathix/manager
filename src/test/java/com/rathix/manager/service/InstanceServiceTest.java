@@ -1,6 +1,7 @@
 package com.rathix.manager.service;
 
 import com.rathix.manager.exception.AlreadyExistsException;
+import com.rathix.manager.exception.ObjectNotFoundException;
 import com.rathix.manager.model.Instance;
 import com.rathix.manager.repository.InstanceRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -81,19 +82,29 @@ class InstanceServiceTest {
     }
 
     /**
-     * Retrieving an instance which doesn't exist should throw a NoSuchElementException
+     * Retrieving an instance should work
      */
     @Test
-    void retrieveInstance() {
+    void retrieveInstance() throws ObjectNotFoundException {
+        when(instanceRepository.findById(any(Long.class))).thenReturn(Optional.ofNullable(instance));
+        Instance retrievedInstance = instanceService.retrieveInstance(0L);
+        assertEquals(retrievedInstance.getName(), "testInstance");
+    }
+
+    /**
+     * Retrieving an instance which doesn't exist should throw a ObjectNotFoundException
+     */
+    @Test
+    void retrieveNonExistentInstance() {
         when(instanceRepository.findById(any(Long.class))).thenReturn(Optional.empty());
-        assertThrows(NoSuchElementException.class, () -> instanceService.retrieveInstance(0L));
+        assertThrows(ObjectNotFoundException.class, () -> instanceService.retrieveInstance(0L));
     }
 
     /**
      * Updating an instance should work
      */
     @Test
-    void updateInstance() throws AlreadyExistsException {
+    void updateInstance() throws AlreadyExistsException, ObjectNotFoundException {
         when(instanceRepository.findById(any(Long.class))).thenReturn(Optional.of(instance));
 
         Instance newInstance = new Instance();
@@ -104,6 +115,15 @@ class InstanceServiceTest {
         Instance savedNewInstance = instanceService.updateInstance(0L, newInstance);
 
         assertEquals(savedNewInstance.getName(), "newTestName");
+    }
+
+    /**
+     * Updating an instance which doesn't exist should throw a ObjectNotFoundException
+     */
+    @Test
+    void updateNonExistentInstance() {
+        when(instanceRepository.findById(any(Long.class))).thenReturn(Optional.empty());
+        assertThrows(ObjectNotFoundException.class, () -> instanceService.updateInstance(0L, instance));
     }
 
     /**

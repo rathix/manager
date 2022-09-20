@@ -2,6 +2,7 @@ package com.rathix.manager.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rathix.manager.exception.AlreadyExistsException;
+import com.rathix.manager.exception.ObjectNotFoundException;
 import com.rathix.manager.model.Instance;
 import com.rathix.manager.service.InstanceService;
 import org.junit.jupiter.api.AfterEach;
@@ -92,7 +93,7 @@ class InstanceControllerTest {
         when(instanceService.retrieveInstances()).thenReturn(instanceList);
 
         mockMvc.perform(get("/api/v1/instance"))
-                .andExpect(status().isFound());
+                .andExpect(status().isOk());
     }
 
     /**
@@ -103,16 +104,15 @@ class InstanceControllerTest {
         when(instanceService.retrieveInstance(any(Long.class))).thenReturn(instance);
 
         mockMvc.perform(get("/api/v1/instance/{id}", instance.getId()))
-                .andExpect(status().isFound());
+                .andExpect(status().isOk());
     }
 
     /**
      * Retrieving an instance which doesn't exist should return 404
      */
     @Test
-    @Disabled
     void retrieveInstanceNotFound() throws Exception {
-        when(instanceService.retrieveInstance(any(Long.class))).thenThrow(new NoSuchElementException());
+        when(instanceService.retrieveInstance(any(Long.class))).thenThrow(new ObjectNotFoundException());
 
         mockMvc.perform(get("/api/v1/instance/{id}", instance.getId()))
                 .andExpect(status().isNotFound());
@@ -145,13 +145,26 @@ class InstanceControllerTest {
     }
 
     /**
-     * Deleting an instance should return 410
+     * Updating an instance which doesn't exist should return 404
+     */
+    @Test
+    void updateInstanceNotFound() throws Exception {
+        when(instanceService.updateInstance(any(Long.class), any(Instance.class))).thenThrow(new ObjectNotFoundException());
+
+        mockMvc.perform(put("/api/v1/instance/{id}", instance.getId())
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(instance)))
+                .andExpect(status().isNotFound());
+    }
+
+    /**
+     * Deleting an instance should return 200
      */
     @Test
     void deleteInstance() throws Exception {
         when(instanceService.deleteInstance(any(Long.class))).thenReturn(true);
 
         mockMvc.perform(delete("/api/v1/instance/{id}", instance.getId()))
-                .andExpect(status().isGone());
+                .andExpect(status().isOk());
     }
 }

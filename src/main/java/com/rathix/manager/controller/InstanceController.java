@@ -1,6 +1,7 @@
 package com.rathix.manager.controller;
 
 import com.rathix.manager.exception.AlreadyExistsException;
+import com.rathix.manager.exception.ObjectNotFoundException;
 import com.rathix.manager.model.Instance;
 import com.rathix.manager.service.InstanceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +26,16 @@ public class InstanceController {
 
     @GetMapping
     public ResponseEntity<Object> retrieveInstances() {
-        return new ResponseEntity<>(instanceService.retrieveInstances(), HttpStatus.FOUND);
+        return new ResponseEntity<>(instanceService.retrieveInstances(), HttpStatus.OK);
     }
 
     @GetMapping("{id}")
     public ResponseEntity<Object> retrieveInstance(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(instanceService.retrieveInstance(id), HttpStatus.FOUND);
+        try {
+            return new ResponseEntity<>(instanceService.retrieveInstance(id), HttpStatus.OK);
+        } catch (ObjectNotFoundException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
 
     @PutMapping("{id}")
@@ -39,12 +44,14 @@ public class InstanceController {
             return new ResponseEntity<>(instanceService.updateInstance(id, instance), HttpStatus.OK);
         } catch (AlreadyExistsException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_MODIFIED);
+        } catch (ObjectNotFoundException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Object> deleteInstance(@PathVariable("id") Long id) {
         instanceService.deleteInstance(id);
-        return new ResponseEntity<>(HttpStatus.GONE);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
