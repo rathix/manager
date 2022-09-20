@@ -31,14 +31,15 @@ public class InstanceService {
     }
 
     public Instance updateInstance(Long id, Instance instance) throws AlreadyExistsException, ObjectNotFoundException {
-        if (instanceRepository.existsInstanceByName(instance.getName())) {
-            throw new AlreadyExistsException("An instance with this name already exists.");
-        } else {
-            Instance oldInstance = instanceRepository.findById(id).orElseThrow(ObjectNotFoundException::new);
-            oldInstance.setName(instance.getName());
-            oldInstance.setUrl(instance.getUrl());
-            return instanceRepository.save(oldInstance);
+        Instance oldInstance = instanceRepository.findById(id).orElseThrow(ObjectNotFoundException::new);
+        if (!(oldInstance.getName().equals(instance.getName()))) {
+            if (instanceRepository.existsInstanceByName(instance.getName())) {
+                throw new AlreadyExistsException("An instance with this name already exists.");
+            }
         }
+        oldInstance.setName(instance.getName());
+        oldInstance.setUrl(instance.getUrl());
+        return instanceRepository.save(oldInstance);
     }
 
     public boolean deleteInstance(Long id) throws ObjectNotFoundException {

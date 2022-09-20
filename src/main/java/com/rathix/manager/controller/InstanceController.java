@@ -43,7 +43,7 @@ public class InstanceController {
         try {
             return new ResponseEntity<>(instanceService.updateInstance(id, instance), HttpStatus.OK);
         } catch (AlreadyExistsException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         } catch (ObjectNotFoundException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
