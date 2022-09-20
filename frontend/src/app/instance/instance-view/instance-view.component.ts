@@ -42,7 +42,5 @@ export class InstanceViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInstances();
-    console.log("init");
   }
-
 }

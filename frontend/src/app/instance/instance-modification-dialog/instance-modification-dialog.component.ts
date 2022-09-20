@@ -23,8 +23,9 @@ export class InstanceModificationDialogComponent implements OnInit {
     this.service.updateInstance(id, {
       "name": name,
       "url": url
-    }).subscribe(params => {
-      this.dialogRef.close(params);
+    }).subscribe({
+      next: Instance => this.dialogRef.close(),
+      error: (e) => alert(e.error)
     });
   }
 
@@ -34,8 +35,8 @@ export class InstanceModificationDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      url: ['', Validators.required]
+      name: [''],
+      url: ['']
     })
   }
 
@@ -44,6 +45,10 @@ export class InstanceModificationDialogComponent implements OnInit {
     let newUrl = this.form.get("url")?.value;
     if (newName && newUrl) {
       this.updateInstance(this.data.id, newName, newUrl);
+    } else if (newName && !newUrl) {
+      this.updateInstance(this.data.id, newName, this.oldUrl);
+    } else if (!newName && newUrl) {
+      this.updateInstance(this.data.id, this.oldName, newUrl);
     }
   }
 

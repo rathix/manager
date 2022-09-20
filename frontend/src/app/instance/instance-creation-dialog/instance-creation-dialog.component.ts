@@ -14,12 +14,23 @@ export class InstanceCreationDialogComponent implements OnInit {
   
   constructor(private service: InstanceService, private dialogRef: MatDialogRef<InstanceCreationDialogComponent>, private fb: FormBuilder) { }
 
-  createInstance(name: string, url: string) {
+  createStaticInstance(name: string, url: string) {
     this.service.createInstance({
       "name": name,
       "url": url
-    }).subscribe(params => {
-      this.dialogRef.close(params);
+    }).subscribe({
+      next: Instance => this.dialogRef.close(),
+      error: (e) => alert(e.error)
+    });
+  }
+
+  createDynamicInstance(name: string) {
+    this.service.createInstance({
+      "name": name,
+      "url": name + ".rathix.com"
+    }).subscribe({
+      next: Instance => this.dialogRef.close(),
+      error: (e) => alert(e.error)
     });
   }
 
@@ -33,8 +44,10 @@ export class InstanceCreationDialogComponent implements OnInit {
   save() {
     let name = this.form.get("name");
     let url = this.form.get("url");
-    if (name && url) {
-      this.createInstance(name.value, url.value);
+    if (name?.value && url?.value) {
+      this.createStaticInstance(name.value, url.value);
+    } else if (name?.value && !url?.value) {
+      this.createDynamicInstance(name.value);
     }
   }
 }

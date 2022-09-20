@@ -2,14 +2,16 @@
 
 <mat-dialog-content [formGroup]="form" class="instance-dialog">
   <mat-form-field>
-    <input matInput placeholder="{{oldName}}" formControlName="name" required>
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="{{oldName}}" formControlName="name">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="{{oldUrl}}" formControlName="url" required>
+    <mat-label>URL</mat-label>
+    <input matInput placeholder="{{oldUrl}}" formControlName="url">
   </mat-form-field>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
-  <button class="mat-raised-button mat-primary"(click)="delete()">Delete</button>
+  <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+  <button class="mat-raised-button mat-warn" style="margin-left: auto;" (click)="delete()">Delete</button>
 </mat-dialog-actions>
