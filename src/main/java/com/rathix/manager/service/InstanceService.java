@@ -41,7 +41,10 @@ public class InstanceService {
         }
     }
 
-    public boolean deleteInstance(Long id) {
+    public boolean deleteInstance(Long id) throws ObjectNotFoundException {
+        if (instanceRepository.findById(id).isEmpty()) {
+            throw new ObjectNotFoundException();
+        }
         instanceRepository.deleteById(id);
         return true;
     }

@@ -51,7 +51,11 @@ public class InstanceController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<Object> deleteInstance(@PathVariable("id") Long id) {
-        instanceService.deleteInstance(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        try {
+            instanceService.deleteInstance(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (ObjectNotFoundException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
 }

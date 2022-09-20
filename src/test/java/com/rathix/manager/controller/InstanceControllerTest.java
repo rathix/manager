@@ -162,8 +162,6 @@ class InstanceControllerTest {
      */
     @Test
     void deleteInstance() throws Exception {
-        when(instanceService.deleteInstance(any(Long.class))).thenReturn(true);
-
         mockMvc.perform(delete("/api/v1/instance/{id}", instance.getId()))
                 .andExpect(status().isOk());
     }

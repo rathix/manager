@@ -139,7 +139,17 @@ class InstanceServiceTest {
      * Deleting an instance should work
      */
     @Test
-    void deleteInstance() {
+    void deleteInstance() throws ObjectNotFoundException {
+        when(instanceRepository.findById(any(Long.class))).thenReturn(Optional.ofNullable(instance));
         assertTrue(instanceService.deleteInstance(0L));
+    }
+
+    /**
+     * Deleting an instance which does not exist should throw ObjectNotFoundException
+     */
+    @Test
+    void deleteNonExistentInstance() throws ObjectNotFoundException {
+        when(instanceRepository.findById(any(Long.class))).thenReturn(Optional.empty());
+        assertThrows(ObjectNotFoundException.class, () -> instanceService.deleteInstance(0L));
     }
 }
