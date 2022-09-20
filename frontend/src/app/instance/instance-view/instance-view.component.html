@@ -1,0 +1,17 @@
+<div class="instance-main">
+    <ng-container *ngFor="let instance of instances">
+        <mat-card class="instance-card">
+            <mat-card-header>
+            <div mat-card-avatar style="background-image: url('/assets/png/{{instance.name}}.png'); background-size: cover;"></div>
+            <mat-card-title>{{instance.name}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-actions>
+            <a href="https://{{instance.url}}" class="instance-link"><button mat-icon-button><mat-icon fontIcon="login"></mat-icon></button></a>
+            <button mat-icon-button color="primary" (click)="openInstanceModificationDialog(instance.id, instance.name, instance.url)"><mat-icon fontIcon="edit"></mat-icon></button>
+            </mat-card-actions>
+        </mat-card>
+    </ng-container>    
+</div>
+<div class="button-div">
+    <button mat-flat-button color="primary" (click)="openInstanceCreationDialog()">Add</button>
+</div>

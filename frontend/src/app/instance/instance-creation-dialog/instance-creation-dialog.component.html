@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Create a new instance</h2>
+
+<mat-dialog-content [formGroup]="form" class="instance-dialog">
+  <mat-form-field>
+    <input matInput placeholder="My Instance" formControlName="name" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="instance.example.com" formControlName="url" required>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Modify an instance</h2>
+
+<mat-dialog-content [formGroup]="form" class="instance-dialog">
+  <mat-form-field>
+    <input matInput placeholder="{{oldName}}" formControlName="name" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="{{oldUrl}}" formControlName="url" required>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+  <button class="mat-raised-button mat-primary"(click)="delete()">Delete</button>
+</mat-dialog-actions>
