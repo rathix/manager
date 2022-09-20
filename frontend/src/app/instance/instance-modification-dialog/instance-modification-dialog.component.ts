@@ -49,6 +49,8 @@ export class InstanceModificationDialogComponent implements OnInit {
       this.updateInstance(this.data.id, newName, this.oldUrl);
     } else if (!newName && newUrl) {
       this.updateInstance(this.data.id, this.oldName, newUrl);
+    } else {
+      this.dialogRef.close();
     }
   }
 
