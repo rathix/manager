@@ -1,17 +1,27 @@
 <div class="instance-main">
-    <ng-container *ngFor="let instance of instances">
+  <ng-container *ngFor="let instance of instances">
+    <div class="instance-div">
+      <a *ngIf="!editToggle.checked" class="instance-link" href="https://{{instance.url}}">
         <mat-card class="instance-card">
-            <mat-card-header>
-            <div mat-card-avatar style="background-image: url('/assets/png/{{instance.name}}.png'); background-size: cover;"></div>
+          <mat-card-header>
+            <div mat-card-avatar
+                 style="background-image: url('/assets/png/{{instance.name}}.png'); background-size: cover;"></div>
             <mat-card-title>{{instance.name}}</mat-card-title>
-            </mat-card-header>
-            <mat-card-actions>
-            <a href="https://{{instance.url}}" class="instance-link"><button mat-icon-button><mat-icon fontIcon="login"></mat-icon></button></a>
-            <button mat-icon-button color="primary" (click)="openInstanceModificationDialog(instance.id, instance.name, instance.url)"><mat-icon fontIcon="edit"></mat-icon></button>
-            </mat-card-actions>
+          </mat-card-header>
         </mat-card>
-    </ng-container>    
+      </a>
+      <mat-card (click)="openInstanceModificationDialog(instance.id, instance.name, instance.url)" *ngIf="editToggle.checked"
+                class="instance-card">
+        <mat-card-header>
+          <div mat-card-avatar
+               style="background-image: url('/assets/png/{{instance.name}}.png'); background-size: cover;"></div>
+          <mat-card-title>{{instance.name}}</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </ng-container>
 </div>
 <div class="button-div">
-    <button mat-flat-button color="primary" (click)="openInstanceCreationDialog()">Add</button>
+  <button (click)="openInstanceCreationDialog()" class="add-button" color="primary" mat-flat-button>Add</button>
+  <mat-slide-toggle #editToggle style="margin-left: 30px;">Edit Mode</mat-slide-toggle>
 </div>

@@ -13,6 +13,8 @@ import { InstanceService } from '../instance.service';
 })
 export class InstanceViewComponent implements OnInit {
   instances: Instance[] = [];
+  editMode: boolean = false;
+  hoverElement?: Instance | null = null;
 
   constructor(private service: InstanceService, private dialog: MatDialog) { }
 

@@ -19,6 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input'; 
 import { RouterModule } from '@angular/router';
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ReactiveFormsModule,
     MatInputModule,
     RouterModule.forRoot([], {onSameUrlNavigation: 'reload'}),
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSlideToggleModule
   ],
   exports: [RouterModule],
   providers: [

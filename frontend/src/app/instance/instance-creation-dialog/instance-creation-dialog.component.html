@@ -3,15 +3,15 @@
 <mat-dialog-content [formGroup]="form" class="instance-dialog">
   <mat-form-field>
     <mat-label>Name</mat-label>
-    <input matInput placeholder="example" formControlName="name" required>
+    <input formControlName="name" matInput placeholder="example" required>
   </mat-form-field>
   <mat-form-field *ngIf="staticUrl.checked">
     <mat-label>URL</mat-label>
-    <input matInput placeholder="instance.example.com" formControlName="url" required>
+    <input formControlName="url" matInput placeholder="instance.example.com" required>
   </mat-form-field>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
-  <mat-checkbox #staticUrl style="margin-left: auto;">Static URL</mat-checkbox>
+  <button (click)="save()" class="mat-raised-button mat-primary">Save</button>
+  <mat-slide-toggle #staticUrl style="margin-left: auto;">Static URL</mat-slide-toggle>
 </mat-dialog-actions>
