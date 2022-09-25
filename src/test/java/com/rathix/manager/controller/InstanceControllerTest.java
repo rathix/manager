@@ -7,7 +7,6 @@ import com.rathix.manager.model.Instance;
 import com.rathix.manager.service.InstanceService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -141,7 +139,7 @@ class InstanceControllerTest {
         mockMvc.perform(put("/api/v1/instance/{id}", instance.getId())
                         .contentType("application/json")
                         .content(objectMapper.writeValueAsString(instance)))
-                .andExpect(status().isNotModified());
+                .andExpect(status().isBadRequest());
     }
 
     /**

@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -131,8 +130,7 @@ class InstanceServiceTest {
      */
     @Test
     void updateDuplicateInstance() {
-        when(instanceRepository.existsInstanceByName(any(String.class))).thenReturn(true);
-        assertThrows(AlreadyExistsException.class, () -> instanceService.updateInstance(0L, instance));
+        assertThrows(ObjectNotFoundException.class, () -> instanceService.updateInstance(0L, instance));
     }
 
     /**
