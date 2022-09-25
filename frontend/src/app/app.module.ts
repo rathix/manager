@@ -22,6 +22,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 import {MatTooltipModule} from '@angular/material/tooltip'; 
 import {DragDropModule} from '@angular/cdk/drag-drop'; 
+import {MatDividerModule} from '@angular/material/divider'; 
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatCheckboxModule,
     MatSlideToggleModule,
     MatTooltipModule,
-    DragDropModule
+    DragDropModule,
+    MatDividerModule
   ],
   exports: [RouterModule],
   providers: [

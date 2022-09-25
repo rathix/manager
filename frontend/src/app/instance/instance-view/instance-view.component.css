@@ -4,8 +4,7 @@
 
 .instance-div {
     margin: 30px;
-    flex: 0 1 250px;
-    max-width: 250px;
+    width: 250px;
 }
 
 .instance-main {
@@ -19,6 +18,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 40px;
 }
 
 .instance-card:hover {
@@ -53,12 +53,13 @@
 
 .category-div {
     display: flex;
-    flex: auto;
+    flex: 0 0 25%;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     border-style: solid;
-    margin: 15px;
+    margin: 40px;
+    margin-bottom: 0px;
     border-color: #3f51b5;
     border-radius: 16px;
 }
@@ -73,4 +74,10 @@
     border-top-right-radius: 8px;
     color: #EEEEEE;
     font-size: 20px;
+    height: fit-content;
+}
+
+.system-main {
+    display: flex;
+    justify-content: center;
 }
