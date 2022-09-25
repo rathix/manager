@@ -10,13 +10,17 @@
                 <div mat-card-avatar
                      style="background-image: url('{{instance.iconPath}}'); background-size: cover;"></div>
                 <mat-card-title>{{instance.name}}</mat-card-title>
-                <mat-icon fontIcon="circle" *ngIf="instance.reachable" class="status-icon-ok" matTooltip="Instance Reachable"></mat-icon>
-                <mat-icon fontIcon="circle" *ngIf="!instance.reachable" class="status-icon-nok" matTooltip="Instance Not Reachable"></mat-icon>
+                <mat-icon *ngIf="instance.reachable" class="status-icon-ok" fontIcon="circle"
+                          matTooltip="Instance Reachable"></mat-icon>
+                <mat-icon *ngIf="!instance.reachable" class="status-icon-nok" fontIcon="circle"
+                          matTooltip="Instance Not Reachable"></mat-icon>
               </mat-card-header>
             </mat-card>
           </a>
-          <mat-card (click)="openInstanceModificationDialog(instance.id, instance.name, instance.url, instance.iconPath)" *ngIf="editToggle.checked"
-                    class="instance-card">
+          <mat-card
+            (click)="openInstanceModificationDialog(instance.id, instance.name, instance.url, instance.iconPath)"
+            *ngIf="editToggle.checked"
+            class="instance-card">
             <mat-card-header>
               <div mat-card-avatar
                    style="background-image: url('{{instance.iconPath}}'); background-size: cover;"></div>
@@ -24,12 +28,13 @@
             </mat-card-header>
           </mat-card>
         </div>
-      </ng-container>    
+      </ng-container>
     </div>
   </ng-container>
 </div>
 <div class="button-div">
-  <button (click)="openInstanceCreationDialog()" class="add-button" color="primary" mat-flat-button>Add Instance</button>
+  <button (click)="openInstanceCreationDialog()" class="add-button" color="primary" mat-flat-button>Add Instance
+  </button>
   <mat-slide-toggle #editToggle style="margin-left: 30px;">Edit Mode</mat-slide-toggle>
 </div>
 <mat-divider style="margin: 40px;"></mat-divider>

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { InstanceService } from '../instance.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {InstanceService} from '../instance.service';
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-instance-creation-dialog',
@@ -10,8 +10,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class InstanceCreationDialogComponent implements OnInit {
   form!: FormGroup;
-  
-  constructor(private service: InstanceService, private dialogRef: MatDialogRef<InstanceCreationDialogComponent>, private fb: FormBuilder) { }
+
+  constructor(private service: InstanceService, private dialogRef: MatDialogRef<InstanceCreationDialogComponent>, private fb: FormBuilder) {
+  }
 
   createStaticInstance(name: string, url: string, iconPath: string, category: string) {
     this.service.createInstance({

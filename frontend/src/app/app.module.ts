@@ -1,28 +1,30 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 
-import { MatCardModule } from '@angular/material/card';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { InstanceViewComponent } from './instance/instance-view/instance-view.component'; 
-import { MatGridListModule } from '@angular/material/grid-list'; 
-import {MatButtonModule} from '@angular/material/button'; 
-import { InstanceService } from './instance/instance.service';
-import { HttpClientModule } from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {InstanceViewComponent} from './instance/instance-view/instance-view.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatButtonModule} from '@angular/material/button';
+import {InstanceService} from './instance/instance.service';
+import {HttpClientModule} from '@angular/common/http';
 import {MatIconModule} from '@angular/material/icon';
-import { InstanceCreationDialogComponent } from './instance/instance-creation-dialog/instance-creation-dialog.component';
-import { InstanceModificationDialogComponent } from './instance/instance-modification-dialog/instance-modification-dialog.component'; 
-import {MatDialogModule} from '@angular/material/dialog'; 
-import {MatFormFieldModule} from '@angular/material/form-field'; 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatInputModule} from '@angular/material/input'; 
-import { RouterModule } from '@angular/router';
-import {MatCheckboxModule} from '@angular/material/checkbox'; 
-import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
-import {MatTooltipModule} from '@angular/material/tooltip'; 
-import {DragDropModule} from '@angular/cdk/drag-drop'; 
-import {MatDividerModule} from '@angular/material/divider'; 
+import {InstanceCreationDialogComponent} from './instance/instance-creation-dialog/instance-creation-dialog.component';
+import {
+  InstanceModificationDialogComponent
+} from './instance/instance-modification-dialog/instance-modification-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {RouterModule} from '@angular/router';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,7 @@ import {MatDividerModule} from '@angular/material/divider';
     MatIconModule,
     MatDialogModule,
     MatFormFieldModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     MatInputModule,
     RouterModule.forRoot([], {onSameUrlNavigation: 'reload'}),
@@ -57,4 +59,5 @@ import {MatDividerModule} from '@angular/material/divider';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

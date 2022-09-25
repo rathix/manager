@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { InstanceViewComponent } from './instance-view.component';
+import {InstanceViewComponent} from './instance-view.component';
 
 describe('InstanceViewComponent', () => {
   let component: InstanceViewComponent;
@@ -8,9 +8,9 @@ describe('InstanceViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InstanceViewComponent ]
+      declarations: [InstanceViewComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(InstanceViewComponent);
     component = fixture.componentInstance;

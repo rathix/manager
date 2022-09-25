@@ -1,11 +1,11 @@
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { UrlHandlingStrategy } from '@angular/router';
-import { Instance } from '../instance';
-import { InstanceCreationDialogComponent } from '../instance-creation-dialog/instance-creation-dialog.component';
-import { InstanceModificationDialogComponent } from '../instance-modification-dialog/instance-modification-dialog.component';
-import { InstanceService } from '../instance.service';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {Instance} from '../instance';
+import {InstanceCreationDialogComponent} from '../instance-creation-dialog/instance-creation-dialog.component';
+import {
+  InstanceModificationDialogComponent
+} from '../instance-modification-dialog/instance-modification-dialog.component';
+import {InstanceService} from '../instance.service';
 
 @Component({
   selector: 'app-instance-view',
@@ -15,10 +15,9 @@ import { InstanceService } from '../instance.service';
 export class InstanceViewComponent implements OnInit {
   categories: string[] = [];
   instances: Instance[] = [];
-  editMode: boolean = false;
-  hoverElement?: Instance | null = null;
 
-  constructor(private service: InstanceService, private dialog: MatDialog) { }
+  constructor(private service: InstanceService, private dialog: MatDialog) {
+  }
 
   getInstances() {
     this.service.retrieveInstances().subscribe(params => {

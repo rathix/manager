@@ -1,8 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { InstanceCreationDialogComponent } from '../instance-creation-dialog/instance-creation-dialog.component';
-import { InstanceService } from '../instance.service';
+import {Component, Inject, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {InstanceService} from '../instance.service';
 
 @Component({
   selector: 'app-instance-modification-dialog',
@@ -15,7 +14,7 @@ export class InstanceModificationDialogComponent implements OnInit {
   oldUrl: string;
   oldIconPath: string;
   oldCategory: string;
-  
+
   constructor(private service: InstanceService, private dialogRef: MatDialogRef<InstanceModificationDialogComponent>, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.oldName = this.data.name;
     this.oldUrl = this.data.url;

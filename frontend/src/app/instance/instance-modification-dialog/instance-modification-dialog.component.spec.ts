@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { InstanceModificationDialogComponent } from './instance-modification-dialog.component';
+import {InstanceModificationDialogComponent} from './instance-modification-dialog.component';
 
 describe('InstanceModificationDialogComponent', () => {
   let component: InstanceModificationDialogComponent;
@@ -8,9 +8,9 @@ describe('InstanceModificationDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InstanceModificationDialogComponent ]
+      declarations: [InstanceModificationDialogComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(InstanceModificationDialogComponent);
     component = fixture.componentInstance;
