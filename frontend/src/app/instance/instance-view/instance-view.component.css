@@ -4,8 +4,8 @@
 
 .instance-div {
     margin: 30px;
-    flex: 0 1 200px;
-    max-width: 200px;
+    flex: 0 1 250px;
+    max-width: 250px;
 }
 
 .instance-main {
@@ -31,4 +31,22 @@
 
 .show-edit-button {
     visibility: hidden;
+}
+
+.status-icon-ok {
+    margin-top: auto;
+    margin-left: auto;
+    color: green;
+    font-size: 1em;
+    height: auto;
+    width: auto;
+}
+
+.status-icon-nok {
+    margin-top: auto;
+    margin-left: auto;
+    color: red;
+    font-size: 1em;
+    height: auto;
+    width: auto;
 }

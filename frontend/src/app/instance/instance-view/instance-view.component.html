@@ -7,6 +7,8 @@
             <div mat-card-avatar
                  style="background-image: url('{{instance.iconPath}}'); background-size: cover;"></div>
             <mat-card-title>{{instance.name}}</mat-card-title>
+            <mat-icon fontIcon="circle" *ngIf="instance.reachable" class="status-icon-ok" matTooltip="Instance Reachable"></mat-icon>
+            <mat-icon fontIcon="circle" *ngIf="!instance.reachable" class="status-icon-nok" matTooltip="Instance Not Reachable"></mat-icon>
           </mat-card-header>
         </mat-card>
       </a>

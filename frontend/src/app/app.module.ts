@@ -20,6 +20,7 @@ import {MatInputModule} from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
+import {MatTooltipModule} from '@angular/material/tooltip'; 
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatInputModule,
     RouterModule.forRoot([], {onSameUrlNavigation: 'reload'}),
     MatCheckboxModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTooltipModule
   ],
   exports: [RouterModule],
   providers: [

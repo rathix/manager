@@ -4,4 +4,5 @@ export interface Instance {
     url: string;
     iconPath: string;
     category?: string;
+    reachable?: boolean;
 }

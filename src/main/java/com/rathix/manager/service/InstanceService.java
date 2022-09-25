@@ -22,7 +22,11 @@ public class InstanceService {
     }
 
     public List<Instance> retrieveInstances() {
-        return instanceRepository.findAll();
+        List<Instance> instanceList = instanceRepository.findAll();
+        for (Instance instance : instanceList) {
+            instance.testReachable();
+        }
+        return instanceList;
     }
 
     public Instance retrieveInstance(Long id) throws ObjectNotFoundException {
