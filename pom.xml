@@ -59,4 +59,12 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Internal repo</name>
+            <url>file:///home/rathix/</url>
+        </repository>
+    </distributionManagement>
+
 </project>
