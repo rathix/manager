@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UrlHandlingStrategy } from '@angular/router';
@@ -12,6 +13,7 @@ import { InstanceService } from '../instance.service';
   styleUrls: ['./instance-view.component.css']
 })
 export class InstanceViewComponent implements OnInit {
+  categories: string[] = [];
   instances: Instance[] = [];
   editMode: boolean = false;
   hoverElement?: Instance | null = null;
@@ -21,7 +23,29 @@ export class InstanceViewComponent implements OnInit {
   getInstances() {
     this.service.retrieveInstances().subscribe(params => {
       this.instances = params;
+      this.getCategories();
     });
+  }
+
+  getCategories() {
+    this.categories = [];
+    this.instances.forEach((instance: Instance) => {
+      if (instance.category) {
+        if (!this.categories.find(elem => elem == instance.category)) {
+          this.categories.push(instance.category);
+        }
+      }
+    });
+  }
+
+  getInstancesForCategory(category: string): Instance[] {
+    let returnInstances: Instance[] = [];
+    this.instances.forEach((instance) => {
+      if (instance.category == category) {
+        returnInstances.push(instance);
+      }
+    })
+    return returnInstances;
   }
 
   openInstanceCreationDialog() {
@@ -30,17 +54,17 @@ export class InstanceViewComponent implements OnInit {
       .subscribe(() => this.ngOnInit());
   }
 
-  openInstanceModificationDialog(id?: number, name?: string, url?: string, iconPath?: string) {
+  openInstanceModificationDialog(id?: number, name?: string, url?: string, iconPath?: string, category?: string) {
     this.dialog.open(InstanceModificationDialogComponent, {
       data: {
         "id": id,
         "name": name,
         "url": url,
         "iconPath": iconPath,
+        "category": category
       }
     })
-      .afterClosed()
-      .subscribe(() => this.ngOnInit());
+      .afterClosed().subscribe(() => this.ngOnInit());
   }
 
   ngOnInit(): void {

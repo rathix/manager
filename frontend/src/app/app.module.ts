@@ -21,6 +21,7 @@ import { RouterModule } from '@angular/router';
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 import {MatTooltipModule} from '@angular/material/tooltip'; 
+import {DragDropModule} from '@angular/cdk/drag-drop'; 
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     RouterModule.forRoot([], {onSameUrlNavigation: 'reload'}),
     MatCheckboxModule,
     MatSlideToggleModule,
-    MatTooltipModule
+    MatTooltipModule,
+    DragDropModule
   ],
   exports: [RouterModule],
   providers: [

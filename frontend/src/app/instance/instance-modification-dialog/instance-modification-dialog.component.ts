@@ -14,18 +14,21 @@ export class InstanceModificationDialogComponent implements OnInit {
   oldName: string;
   oldUrl: string;
   oldIconPath: string;
+  oldCategory: string;
   
   constructor(private service: InstanceService, private dialogRef: MatDialogRef<InstanceModificationDialogComponent>, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.oldName = this.data.name;
     this.oldUrl = this.data.url;
     this.oldIconPath = this.data.iconPath;
+    this.oldCategory = this.data.category;
   }
 
-  updateInstance(id: string, name: string, url: string, iconPath: string) {
+  updateInstance(id: string, name: string, url: string, iconPath: string, category: string) {
     this.service.updateInstance(id, {
       "name": name,
       "url": url,
       "iconPath": iconPath,
+      "category": category
     }).subscribe({
       next: Instance => this.dialogRef.close(),
       error: (e) => alert(e.error)
@@ -41,6 +44,7 @@ export class InstanceModificationDialogComponent implements OnInit {
       name: [''],
       url: [''],
       iconPath: [''],
+      category: ['']
     })
   }
 
@@ -48,7 +52,8 @@ export class InstanceModificationDialogComponent implements OnInit {
     let newName = this.form.get("name")?.value;
     let newUrl = this.form.get("url")?.value;
     let newIconPath = this.form.get("iconPath")?.value;
-    this.updateInstance(this.data.id, newName || this.oldName, newUrl || this.oldUrl, newIconPath || this.oldIconPath);
+    let newCategory = this.form.get("category")?.value;
+    this.updateInstance(this.data.id, newName || this.oldName, newUrl || this.oldUrl, newIconPath || this.oldIconPath, newCategory || this.oldCategory);
   }
 
   delete() {
