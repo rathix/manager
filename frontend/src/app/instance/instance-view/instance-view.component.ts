@@ -30,12 +30,13 @@ export class InstanceViewComponent implements OnInit {
       .subscribe(() => this.ngOnInit());
   }
 
-  openInstanceModificationDialog(id?: number, name?: string, url?: string) {
+  openInstanceModificationDialog(id?: number, name?: string, url?: string, iconPath?: string) {
     this.dialog.open(InstanceModificationDialogComponent, {
       data: {
         "id": id,
         "name": name,
-        "url": url
+        "url": url,
+        "iconPath": iconPath,
       }
     })
       .afterClosed()

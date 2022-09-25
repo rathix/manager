@@ -9,9 +9,13 @@
     <mat-label>URL</mat-label>
     <input formControlName="url" matInput placeholder="instance.example.com" required>
   </mat-form-field>
+  <mat-form-field *ngIf="staticUrl.checked">
+    <mat-label>Icon Path</mat-label>
+    <input formControlName="iconPath" matInput placeholder="/assets/png/example.png" required>
+  </mat-form-field>
 </mat-dialog-content>
 
 <mat-dialog-actions>
   <button (click)="save()" class="mat-raised-button mat-primary">Save</button>
-  <mat-slide-toggle #staticUrl style="margin-left: auto;">Static URL</mat-slide-toggle>
+  <mat-slide-toggle #staticUrl style="margin-left: auto;">Static Configuration</mat-slide-toggle>
 </mat-dialog-actions>

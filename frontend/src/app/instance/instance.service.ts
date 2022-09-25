@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 
 @Injectable()
 export class InstanceService {
-    instanceUrl: string = "http://freighter.rathix.com:8080/api/v1/instance";
+    instanceUrl: string = "http://localhost:8080/api/v1/instance";
 
     constructor(private http: HttpClient) {}
 

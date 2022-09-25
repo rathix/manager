@@ -38,6 +38,8 @@ public class InstanceService {
         }
         oldInstance.setName(instance.getName());
         oldInstance.setUrl(instance.getUrl());
+        oldInstance.setIconPath(instance.getIconPath());
+        oldInstance.setCategory(instance.getCategory());
         return instanceRepository.save(oldInstance);
     }
 

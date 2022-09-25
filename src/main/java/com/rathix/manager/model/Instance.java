@@ -14,4 +14,6 @@ public class Instance {
     private Long id;
     private String name;
     private String url;
+    private String iconPath;
+    private String category = "default";
 }

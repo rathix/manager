@@ -5,16 +5,16 @@
         <mat-card class="instance-card">
           <mat-card-header>
             <div mat-card-avatar
-                 style="background-image: url('/assets/png/{{instance.name}}.png'); background-size: cover;"></div>
+                 style="background-image: url('{{instance.iconPath}}'); background-size: cover;"></div>
             <mat-card-title>{{instance.name}}</mat-card-title>
           </mat-card-header>
         </mat-card>
       </a>
-      <mat-card (click)="openInstanceModificationDialog(instance.id, instance.name, instance.url)" *ngIf="editToggle.checked"
+      <mat-card (click)="openInstanceModificationDialog(instance.id, instance.name, instance.url, instance.iconPath)" *ngIf="editToggle.checked"
                 class="instance-card">
         <mat-card-header>
           <div mat-card-avatar
-               style="background-image: url('/assets/png/{{instance.name}}.png'); background-size: cover;"></div>
+               style="background-image: url('{{instance.iconPath}}'); background-size: cover;"></div>
           <mat-card-title>{{instance.name}}</mat-card-title>
         </mat-card-header>
       </mat-card>

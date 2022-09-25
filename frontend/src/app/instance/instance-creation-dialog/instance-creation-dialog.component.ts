@@ -14,10 +14,11 @@ export class InstanceCreationDialogComponent implements OnInit {
   
   constructor(private service: InstanceService, private dialogRef: MatDialogRef<InstanceCreationDialogComponent>, private fb: FormBuilder) { }
 
-  createStaticInstance(name: string, url: string) {
+  createStaticInstance(name: string, url: string, iconPath: string) {
     this.service.createInstance({
       "name": name,
-      "url": url
+      "url": url,
+      "iconPath": iconPath
     }).subscribe({
       next: Instance => this.dialogRef.close(),
       error: (e) => alert(e.error)
@@ -27,7 +28,8 @@ export class InstanceCreationDialogComponent implements OnInit {
   createDynamicInstance(name: string) {
     this.service.createInstance({
       "name": name,
-      "url": name + ".rathix.com"
+      "url": name + ".rathix.com",
+      "iconPath": "/assets/png/" + name + ".png",
     }).subscribe({
       next: Instance => this.dialogRef.close(),
       error: (e) => alert(e.error)
@@ -37,15 +39,17 @@ export class InstanceCreationDialogComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       name: ['', Validators.required],
-      url: ['', Validators.required]
+      url: ['', Validators.required],
+      iconPath: ['']
     })
   }
 
   save() {
     let name = this.form.get("name");
     let url = this.form.get("url");
+    let iconPath = this.form.get("iconPath");
     if (name?.value && url?.value) {
-      this.createStaticInstance(name.value, url.value);
+      this.createStaticInstance(name.value, url.value, iconPath?.value);
     } else if (name?.value && !url?.value) {
       this.createDynamicInstance(name.value);
     }
