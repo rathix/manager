@@ -8,8 +8,11 @@ Current features:
 - Status information of instances
 
 Future features:
+- Drag & Drop to change categories
 - System information
     - CPU usage
     - RAM usage
     - Network usage
     - Storage status
+- Docker image
+- Autoconfiguration of instances using docker labels
