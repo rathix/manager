@@ -18,6 +18,7 @@ export class InstanceService {
     return this.http.get<Instance[]>(this.instanceUrl);
   }
 
+  // noinspection JSUnusedGlobalSymbols
   retrieveInstance(id: string): Observable<Instance> {
     return this.http.get<Instance>(this.instanceUrl + "/" + id);
   }

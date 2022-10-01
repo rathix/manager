@@ -21,7 +21,7 @@ export class InstanceCreationDialogComponent implements OnInit {
       "iconPath": iconPath,
       "category": category
     }).subscribe({
-      next: Instance => this.dialogRef.close(),
+      next: () => this.dialogRef.close(),
       error: (e) => alert(e.error)
     });
   }
@@ -33,7 +33,7 @@ export class InstanceCreationDialogComponent implements OnInit {
       "iconPath": "/assets/png/" + name + ".png",
       "category": category || "default"
     }).subscribe({
-      next: Instance => this.dialogRef.close(),
+      next: () => this.dialogRef.close(),
       error: (e) => alert(e.error)
     });
   }

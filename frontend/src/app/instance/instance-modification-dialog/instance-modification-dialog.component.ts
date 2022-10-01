@@ -29,7 +29,7 @@ export class InstanceModificationDialogComponent implements OnInit {
       "iconPath": iconPath,
       "category": category
     }).subscribe({
-      next: Instance => this.dialogRef.close(),
+      next: () => this.dialogRef.close(),
       error: (e) => alert(e.error)
     });
   }
